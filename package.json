@@ -15,11 +15,11 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules&& jest",
+    "test:watch": "set NODE_OPTIONS=--experimental-vm-modules&& jest --watch",
+    "test:cov": "set NODE_OPTIONS=--experimental-vm-modules&& jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:e2e": "set NODE_OPTIONS=--experimental-vm-modules&& jest --config ./test/jest-e2e.json",
     "studio": "pnpm dlx prisma studio --config ./prisma-admin-database/prisma.config.ts --port 6555 ",
     "migrate:dev": "pnpm dlx prisma migrate dev --config ./prisma-admin-database/prisma.config.ts && pnpm dlx prisma migrate dev --config ./prisma-game-database/prisma.config.ts",
     "generate": "pnpm dlx prisma generate --config ./prisma-admin-database/prisma.config.ts && pnpm dlx prisma generate --config ./prisma-game-database/prisma.config.ts"
@@ -55,6 +55,7 @@
     "@types/passport-jwt": "^4.0.1",
     "@types/pg": "^8.20.0",
     "@types/supertest": "^7.0.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.2",
@@ -70,22 +71,5 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
   }
 }
