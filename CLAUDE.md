@@ -2,14 +2,6 @@
 
 该文件为 Claude Code (claude.ai/code) 在此仓库中工作时提供指导。
 
-## 全局规则
-
-- **提交规范（强制）**：commit 信息**必须**遵循以下规则，违反的 commit 会被拒绝：
-  - 使用 `feat:` / `fix:` / `chore:` / `docs:` / `refactor:` / `test:` / `perf:` 前缀
-  - **仅限一行**，简洁描述变更，禁止多行 body
-  - 前缀后使用中文撰写（如 `feat: 添加用户登录接口`）
-  - 禁止使用英文 commit 信息
-
 ## 构建与开发命令
 
 ```bash

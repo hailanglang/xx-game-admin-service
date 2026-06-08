@@ -19,7 +19,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "studio": "pnpm dlx prisma studio --config ./prisma-admin-database/prisma.config.ts --port 6555 & pnpm dlx prisma studio --config ./prisma-game-database/prisma.config.ts --port 6556",
+    "migrate:dev": "pnpm dlx prisma migrate dev --config ./prisma-admin-database/prisma.config.ts && pnpm dlx prisma migrate dev --config ./prisma-game-database/prisma.config.ts",
+    "generate": "pnpm dlx prisma generate --config ./prisma-admin-database/prisma.config.ts && pnpm dlx prisma generate --config ./prisma-game-database/prisma.config.ts"
+
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
