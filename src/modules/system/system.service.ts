@@ -17,7 +17,7 @@ export class SystemService {
     if (existing) {
       throw new ConflictException('配置键已存在');
     }
-    return this.prismaAdmin.systemConfig.create({ data: dto });
+    return this.prismaAdmin.systemConfig.create({ data: dto as any });
   }
 
   async findAllConfigs() {
@@ -45,7 +45,7 @@ export class SystemService {
     }
     return this.prismaAdmin.systemConfig.update({
       where: { key },
-      data: dto,
+      data: dto as any,
     });
   }
 
