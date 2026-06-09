@@ -1,12 +1,12 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards, BadRequestException } from '@nestjs/common';
-import { UsersService } from './users.service.js';
-import { CreateUserDto } from './dto/create-user.dto.js';
-import { UpdateUserDto } from './dto/update-user.dto.js';
-import { QueryUserDto } from './dto/query-user.dto.js';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
-import { PermissionGuard } from '../../common/guards/permission.guard.js';
-import { RequirePermission } from '../../common/decorators/require-permission.decorator.js';
-import { CurrentUser } from '../../common/decorators/current-user.decorator.js';
+import { UsersService } from './users.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { QueryUserDto } from './dto/query-user.dto';
+import { AuthGuard } from '../../common/guards/auth.guard';
+import { PermissionGuard } from '../../common/guards/permission.guard';
+import { RequirePermission } from '../../common/decorators/require-permission.decorator';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
 
 @Controller('api/users')
 @UseGuards(AuthGuard, PermissionGuard)

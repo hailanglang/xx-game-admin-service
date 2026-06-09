@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UsersService } from './users.service.js';
-import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service.js';
+import { UsersService } from './users.service';
+import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
 import { ConflictException, NotFoundException } from '@nestjs/common';
 import {jest} from "@jest/globals"
 

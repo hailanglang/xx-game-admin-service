@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
-import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service.js';
-import { CreateSystemConfigDto } from './dto/create-system-config.dto.js';
-import { UpdateSystemConfigDto } from './dto/update-system-config.dto.js';
-import { QueryLogDto } from './dto/query-log.dto.js';
+import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
+import { CreateSystemConfigDto } from './dto/create-system-config.dto';
+import { UpdateSystemConfigDto } from './dto/update-system-config.dto';
+import { QueryLogDto } from './dto/query-log.dto';
 
 @Injectable()
 export class SystemService {

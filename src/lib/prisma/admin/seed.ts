@@ -2,7 +2,7 @@
 
 import 'dotenv/config';
 import { PrismaPg } from '@prisma/adapter-pg';
-import { PrismaClient } from '../../../../prisma-admin-database/admin-database-client-types/client.js';
+import { PrismaClient } from '../../../../prisma-admin-database/admin-database-client-types/client';
 import * as bcrypt from 'bcrypt';
 
 const connectionString = `${process.env.ADMIN_DATABASE_URL}`;

@@ -1,15 +1,21 @@
 import { Controller, Post, Get, Body, Req, UseGuards } from '@nestjs/common';
-import { AuthService } from './auth.service.js';
-import { LoginDto } from './dto/login.dto.js';
-import { Public } from '../../common/decorators/public.decorator.js';
-import { CurrentUser } from '../../common/decorators/current-user.decorator.js';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
+import { AuthService } from './auth.service';
+import { LoginDto } from './dto/login.dto';
+import { Public } from '../../common/decorators/public.decorator';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { AuthGuard } from '../../common/guards/auth.guard';
 import type { Request } from 'express';
 
 @Controller('api/auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+/**
+ * Create a new cat
+ *
+ * @remarks This operation allows you to create a new cat.
+ *
+ */
   @Public()
   @Post('login')
   async login(

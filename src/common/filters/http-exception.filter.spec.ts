@@ -1,4 +1,4 @@
-import { HttpExceptionFilter } from './http-exception.filter.js';
+import { HttpExceptionFilter } from './http-exception.filter';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { ArgumentsHost } from '@nestjs/common';
 import { jest } from '@jest/globals';

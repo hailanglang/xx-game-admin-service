@@ -4,7 +4,7 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { REQUIRE_PERMISSION_KEY } from '../decorators/require-permission.decorator.js';
+import { REQUIRE_PERMISSION_KEY } from '../decorators/require-permission.decorator';
 
 @Injectable()
 export class PermissionGuard {

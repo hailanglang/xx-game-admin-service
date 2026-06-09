@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, ConflictException, BadRequestException } from '@nestjs/common';
-import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service.js';
-import { CreateRoleDto } from './dto/create-role.dto.js';
-import { AssignPermissionDto } from './dto/assign-permission.dto.js';
+import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
+import { CreateRoleDto } from './dto/create-role.dto';
+import { AssignPermissionDto } from './dto/assign-permission.dto';
 
 @Injectable()
 export class RolesService {

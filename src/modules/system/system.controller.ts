@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards } from '@nestjs/common';
-import { SystemService } from './system.service.js';
-import { CreateSystemConfigDto } from './dto/create-system-config.dto.js';
-import { UpdateSystemConfigDto } from './dto/update-system-config.dto.js';
-import { QueryLogDto } from './dto/query-log.dto.js';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
-import { PermissionGuard } from '../../common/guards/permission.guard.js';
-import { RequirePermission } from '../../common/decorators/require-permission.decorator.js';
+import { SystemService } from './system.service';
+import { CreateSystemConfigDto } from './dto/create-system-config.dto';
+import { UpdateSystemConfigDto } from './dto/update-system-config.dto';
+import { QueryLogDto } from './dto/query-log.dto';
+import { AuthGuard } from '../../common/guards/auth.guard';
+import { PermissionGuard } from '../../common/guards/permission.guard';
+import { RequirePermission } from '../../common/decorators/require-permission.decorator';
 
 @Controller('api/system')
 @UseGuards(AuthGuard, PermissionGuard)

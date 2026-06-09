@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from './auth.service.js';
-import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service.js';
+import { AuthService } from './auth.service';
+import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
 import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';

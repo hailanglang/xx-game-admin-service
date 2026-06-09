@@ -6,6 +6,7 @@
 generator client {
   provider = "prisma-client"
   output = "admin-database-client-types"
+  moduleFormat = "cjs"
 }
 
 datasource db {

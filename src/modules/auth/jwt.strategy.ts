@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service.js';
+import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
 
 interface JwtPayload {
   sub: number;

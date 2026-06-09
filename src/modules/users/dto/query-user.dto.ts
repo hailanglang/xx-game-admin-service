@@ -1,5 +1,5 @@
 import { IsOptional, IsString, IsBoolean } from 'class-validator';
-import { PaginationDto } from '../../../common/dto/pagination.dto.js';
+import { PaginationDto } from '../../../common/dto/pagination.dto';
 
 export class QueryUserDto extends PaginationDto {
   @IsOptional()

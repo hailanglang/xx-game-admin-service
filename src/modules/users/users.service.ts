@@ -4,10 +4,10 @@ import {
   ConflictException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service.js';
-import { CreateUserDto } from './dto/create-user.dto.js';
-import { UpdateUserDto } from './dto/update-user.dto.js';
-import { QueryUserDto } from './dto/query-user.dto.js';
+import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { QueryUserDto } from './dto/query-user.dto';
 
 @Injectable()
 export class UsersService {

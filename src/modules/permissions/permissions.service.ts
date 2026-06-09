@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service.js';
+import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
 
 @Injectable()
 export class PermissionsService {

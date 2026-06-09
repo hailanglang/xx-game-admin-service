@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 
-import { AuthModule } from './modules/auth/auth.module.js';
-import { UsersModule } from './modules/users/users.module.js';
-import { RolesModule } from './modules/roles/roles.module.js';
-import { SystemModule } from './modules/system/system.module.js';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { RolesModule } from './modules/roles/roles.module';
+import { SystemModule } from './modules/system/system.module';
 import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from './common/guards/auth.guard.js';
-import { PermissionGuard } from './common/guards/permission.guard.js';
+import { AuthGuard } from './common/guards/auth.guard';
+import { PermissionGuard } from './common/guards/permission.guard';
 
 @Module({
   imports: [
