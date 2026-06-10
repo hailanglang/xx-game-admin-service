@@ -23,6 +23,11 @@ jobs:
       - run: pnpm install
 
       - run: pnpm run build
+        env:
+          ADMIN_DATABASE_URL: ${{ secrets.ADMIN_DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: 传输文件到服务器
         uses: appleboy/scp-action@v0.1.7
@@ -45,5 +50,11 @@ jobs:
           port: 22
           script: |
             cd /var/www/xx-game-admin-service
+            cat > .env << 'EOF'
+            ADMIN_DATABASE_URL=${{ secrets.ADMIN_DATABASE_URL }}
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            DIRECT_URL=${{ secrets.DIRECT_URL }}
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
+            EOF
             pnpm install --prod
             pm2 restart xx-game-admin-service || pm2 start dist/main.js --name xx-game-admin-service
