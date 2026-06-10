@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
@@ -25,14 +26,27 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor()); // response 规范化
   app.useGlobalFilters(new HttpExceptionFilter()); // 未捕获的异常拦截
 
-  // swagger 
+  // swagger
   const config = new DocumentBuilder()
     .setTitle('xxgame-admin-service')
     .setDescription('The admin service API description')
     .setVersion('1.0')
     .addTag('cats aa')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      name: 'Authorization',
+      description: '输入 JWT token',
+      in: 'header',
+    })
     .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
+  const documentFactory = () => {
+    const document = SwaggerModule.createDocument(app, config);
+    // 全局安全要求：所有接口默认需要 bearer token（配合 @Public() 装饰器可跳过）
+    document.security = [{ bearer: [] }];
+    return document;
+  };
   SwaggerModule.setup('api', app, documentFactory);
 
 
