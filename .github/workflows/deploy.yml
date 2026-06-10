@@ -57,4 +57,4 @@ jobs:
             JWT_SECRET=${{ secrets.JWT_SECRET }}
             EOF
             pnpm install --prod
-            pm2 restart xx-game-admin-service || pm2 start dist/main.js --name xx-game-admin-service
+            pm2 restart xx-game-admin-service || pm2 start dist/src/main.js --name xx-game-admin-service
