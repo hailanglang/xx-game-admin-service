@@ -5,6 +5,7 @@ import * as bcrypt from 'bcrypt';
 import { PrismaAdminService } from '../../lib/prisma/admin/prisma-admin.service';
 import { LoginDto } from './dto/login.dto';
 import { LoginResponseDto } from './dto/login-response.dto';
+import { UserInfoDto } from './dto/user-info.dto';
 
 @Injectable()
 export class AuthService {
@@ -68,19 +69,11 @@ export class AuthService {
 
     return {
       token,
-      currentUser: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        avatar: user.avatar,
-        roleId: user.roleId,
-        roleName: user.role?.name || null,
-        permissions,
-      },
+      currentUser: this.buildUserInfo(user, permissions),
     };
   }
 
-  async getCurrentUser(userId: number) {
+  async getCurrentUser(userId: number): Promise<UserInfoDto> {
     const user = await this.prismaAdmin.adminUser.findUnique({
       where: { id: userId },
       include: {
@@ -100,13 +93,20 @@ export class AuthService {
 
     const permissions = user.role?.permissions.map((rp) => rp.permission.code) || [];
 
+    return this.buildUserInfo(user, permissions);
+  }
+
+  private buildUserInfo(
+    user: { id: number; username: string; email?: string | null; avatar?: string | null; roleId?: number | null; role?: { name?: string | null } | null },
+    permissions: string[],
+  ): UserInfoDto {
     return {
       id: user.id,
       username: user.username,
-      email: user.email,
-      avatar: user.avatar,
-      roleId: user.roleId,
-      roleName: user.role?.name || null,
+      email: user.email ?? '',
+      avatar: user.avatar ?? '',
+      roleId: user.roleId ?? -1,
+      roleName: user.role?.name ?? '',
       permissions,
     };
   }
