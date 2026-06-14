@@ -27,7 +27,6 @@ export class AuthController {
     return this.authService.login(loginDto, ip, userAgent);
   }
 
-  @UseGuards(AuthGuard)
   @Get('currentUser')
   async getCurrentUser(@CurrentUser('id') userId: number) {
     return this.authService.getCurrentUser(userId);

@@ -8,7 +8,6 @@ import { PermissionGuard } from '../../common/guards/permission.guard';
 import { RequirePermission } from '../../common/decorators/require-permission.decorator';
 
 @Controller('api/system')
-@UseGuards(AuthGuard, PermissionGuard)
 export class SystemController {
   constructor(private systemService: SystemService) {}
 

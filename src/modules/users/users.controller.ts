@@ -9,7 +9,6 @@ import { RequirePermission } from '../../common/decorators/require-permission.de
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 
 @Controller('api/users')
-@UseGuards(AuthGuard, PermissionGuard)
 export class UsersController {
   constructor(private usersService: UsersService) {}
 

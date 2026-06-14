@@ -7,7 +7,6 @@ import { PermissionGuard } from '../../common/guards/permission.guard';
 import { RequirePermission } from '../../common/decorators/require-permission.decorator';
 
 @Controller('api/roles')
-@UseGuards(AuthGuard, PermissionGuard)
 export class RolesController {
   constructor(private rolesService: RolesService) {}
 
