@@ -11,10 +11,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
 /**
- * Create a new cat
- *
- * @remarks This operation allows you to create a new cat.
- *
+ * 用户登录
  */
   @Public()
   @Post('login')
@@ -27,6 +24,9 @@ export class AuthController {
     return this.authService.login(loginDto, ip, userAgent);
   }
 
+  /**
+   * 获取当前用户信息
+   */
   @Get('currentUser')
   async getCurrentUser(@CurrentUser('id') userId: number) {
     return this.authService.getCurrentUser(userId);

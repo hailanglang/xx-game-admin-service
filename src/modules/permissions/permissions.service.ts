@@ -14,21 +14,25 @@ const MODULE_NAMES: Record<string, string> = {
 export class PermissionsService {
   constructor(private prismaAdmin: PrismaAdminService) {}
 
-  async findAll(): Promise<PermissionItemDto[]> {
+  async findAll(codes?: string[]): Promise<PermissionItemDto[]> {
     return this.prismaAdmin.permission.findMany({
+      where: codes ? { code: { in: codes } } : undefined,
       orderBy: [{ module: 'asc' }, { action: 'asc' }],
     });
   }
 
-  async findByModule(module: string): Promise<PermissionItemDto[]> {
+  async findByModule(module: string, codes?: string[]): Promise<PermissionItemDto[]> {
     return this.prismaAdmin.permission.findMany({
-      where: { module },
+      where: {
+        module,
+        ...(codes ? { code: { in: codes } } : {}),
+      },
       orderBy: { action: 'asc' },
     });
   }
 
-  async findGrouped(): Promise<PermissionGroupDto[]> {
-    const permissions = await this.findAll();
+  async findGrouped(codes?: string[]): Promise<PermissionGroupDto[]> {
+    const permissions = await this.findAll(codes);
     const moduleMap = new Map<string, PermissionItemDto[]>();
 
     for (const perm of permissions) {

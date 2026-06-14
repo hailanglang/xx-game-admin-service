@@ -31,7 +31,7 @@ async function bootstrap() {
     .setTitle('xxgame-admin-service')
     .setDescription('The admin service API description')
     .setVersion('1.0')
-    .addTag('cats aa')
+    .addTag('V1.0')
     .addBearerAuth({
       type: 'http',
       scheme: 'bearer',

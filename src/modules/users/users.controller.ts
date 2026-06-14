@@ -12,30 +12,45 @@ import { CurrentUser } from '../../common/decorators/current-user.decorator';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  /**
+   * 创建用户
+   */
   @Post()
   @RequirePermission('user:create')
   create(@Body() dto: CreateUserDto) {
     return this.usersService.create(dto);
   }
 
+  /**
+   * 获取用户列表
+   */
   @Get()
   @RequirePermission('user:read')
   findAll(@Query() query: QueryUserDto) {
     return this.usersService.findAll(query);
   }
 
+  /**
+   * 获取用户详情
+   */
   @Get(':id')
   @RequirePermission('user:read')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);
   }
 
+  /**
+   * 更新用户
+   */
   @Put(':id')
   @RequirePermission('user:update')
   update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
     return this.usersService.update(+id, dto);
   }
 
+  /**
+   * 删除用户
+   */
   @Delete(':id')
   @RequirePermission('user:delete')
   remove(@Param('id') id: string, @CurrentUser('id') currentUserId: number) {
