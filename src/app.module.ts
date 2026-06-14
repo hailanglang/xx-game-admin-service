@@ -4,6 +4,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { SystemModule } from './modules/system/system.module';
+import { PermissionsModule } from './modules/permissions/permissions.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './common/guards/auth.guard';
 import { PermissionGuard } from './common/guards/permission.guard';
@@ -13,7 +14,8 @@ import { PermissionGuard } from './common/guards/permission.guard';
     AuthModule,
     UsersModule,
     RolesModule,
-    SystemModule
+    SystemModule,
+    PermissionsModule
   ],
   controllers: [],
   providers: [
